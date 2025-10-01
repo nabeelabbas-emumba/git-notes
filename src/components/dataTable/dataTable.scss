@@ -1,0 +1,22 @@
+.custom-table{
+    border: 1px solid #ddd;
+
+  .ant-table-thead > tr > th {
+    background: #f0f2f5;
+    font-weight: bold;
+  }
+
+  .ant-table-tbody > tr > td {
+    padding: 12px;
+  }
+
+  .ant-table-pagination{
+    padding: 0 1rem;
+  }
+
+  .name-cell{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
