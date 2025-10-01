@@ -4,7 +4,7 @@ import { LayoutModeSwitcher } from "../../components/layoutModeSwitcher/layoutMo
 import './gists.scss'
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons"
 import { Space, Button } from "antd"
-import shareIcon from '../../assets/share.svg'
+import forkIcon from '../../assets/fork.svg'
 import starIcon from '../../assets/star.svg'
 
 export const Gists = () => {
@@ -242,7 +242,7 @@ export const Gists = () => {
         <Space>
           <Button
             type="text"
-            icon={<img src={shareIcon} alt="share-icon-image"/>}
+            icon={<img src={forkIcon} alt="share-icon-image"/>}
             onClick={() => console.log("Edit", record)}
           />
           <Button
