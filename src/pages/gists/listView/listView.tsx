@@ -16,13 +16,25 @@ export const ListView = ({ data, loading, totalPages, onPageChange} : ListViewPr
      const columns = [
     { title: "Name", dataIndex: "name", key: "name", render: (_: string, record: any) => (
         <div className="name-cell">
-          <img src={record.avatar} alt={record.name} className="avatar" />
-          <span className="name-text">{record.name}</span>
+          <img src={record?.owner?.avatar_url} alt={record?.owner?.avatar_url} className="avatar" />
+          <span className="name-text">{record?.owner?.login}</span>
         </div>
       ), },
-    { title: "Notebook", dataIndex: "notebook", key: "notebook" },
-    { title: "Keyword", dataIndex: "keyword", key: "keyword" },
-    { title: "Updated", dataIndex: "updated", key: "updated" },
+    { title: "Notebook", dataIndex: "notebook", key: "notebook", render: (_: string, record: any) => (
+        <div className="name-cell">
+          <span className="name-text">{record?.notebook[0]}</span>
+        </div>
+      ), },
+    { title: "Keyword", dataIndex: "keyword", key: "keyword", render: (_: string, record: any) => (
+        <div className="name-cell">
+          <span className="name-text chip">{record?.keyword}</span>
+        </div>
+      ), },
+    { title: "Updated", dataIndex: "updated", key: "updated" , render: (_: string, record: any) => (
+        <div className="name-cell">
+          <span className="name-text">Last updated {record?.updated_at}</span>
+        </div>
+      ),},
     {
       title: "",
       key: "actions",
