@@ -5,6 +5,7 @@ import './gists.scss'
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons"
 import { Space, Button } from "antd"
 import { ListView } from "./listView/listView"
+import { CardView } from "./cardView/cardView"
 
 
 export const Gists = () => {
@@ -243,6 +244,7 @@ export const Gists = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      <CardView></CardView>
        </div>
   </div>
 }

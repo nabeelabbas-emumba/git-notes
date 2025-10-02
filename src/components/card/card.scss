@@ -1,0 +1,54 @@
+.custom-card {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: none;
+
+  .ant-card-head {
+    background-color: #f5f7fa;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .ant-card-body {
+    padding: 0;
+    font-size: 14px;
+    color: #444;
+  }
+}
+
+.card-header{
+    padding: 20px;
+    background-color: rgb(227, 227, 227);
+
+    .container{
+        gap: 10px;
+        .key{
+            color: #059411;
+        }
+        .value{
+            color: #0072D1;
+        }
+    }
+}
+
+.card-body{
+    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .name{
+        font-size: 14px;
+        font-weight: 400;
+        color: #003B44;
+    }
+
+    .slash{
+        padding: 0 10px;
+    }
+
+    .gist-name{
+         font-size: 14px;
+        font-weight: 600;
+        color: #003B44;
+    }
+}
