@@ -5,15 +5,15 @@ import Header from './components/header/header';
 import { Paginator } from './components/paginator/paginator';
 import { DataTable } from './components/dataTable/dataTable';
 import { Gists } from './pages/gists/gists';
+import { CreateGistForm } from './pages/createGistForm/createGistFrom';
 
 function App() {
- 
-
   return (
    <main className='ladding'>
     <Header></Header>
     <div className='landing-container'>
     <Gists></Gists>
+    <CreateGistForm></CreateGistForm>
        {/* <Paginator currentPage={page}
         totalPages={10}
         hasNext={page < totalPages}
