@@ -4,8 +4,8 @@ import { LayoutModeSwitcher } from "../../components/layoutModeSwitcher/layoutMo
 import './gists.scss'
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons"
 import { Space, Button } from "antd"
-import forkIcon from '../../assets/fork.svg'
-import starIcon from '../../assets/star.svg'
+import { ListView } from "./listView/listView"
+
 
 export const Gists = () => {
     const dummyData = [
@@ -225,60 +225,24 @@ export const Gists = () => {
   const [totalPages, setTotalPages] = useState(10)
   const [loading, setLoading] = useState(false)
 
-  const columns = [
-    { title: "Name", dataIndex: "name", key: "name", render: (_: string, record: any) => (
-        <div className="name-cell">
-          <img src={record.avatar} alt={record.name} className="avatar" />
-          <span className="name-text">{record.name}</span>
-        </div>
-      ), },
-    { title: "Notebook", dataIndex: "notebook", key: "notebook" },
-    { title: "Keyword", dataIndex: "keyword", key: "keyword" },
-    { title: "Updated", dataIndex: "updated", key: "updated" },
-    {
-      title: "",
-      key: "actions",
-      render: (_: any, record: any) => (
-        <Space>
-          <Button
-            type="text"
-            icon={<img src={forkIcon} alt="share-icon-image"/>}
-            onClick={() => console.log("Edit", record)}
-          />
-          <Button
-            type="text"
-            danger
-            icon={<img src={starIcon} alt="star-icon-img" />}
-            onClick={() => console.log("Delete", record)}
-          />
-        </Space>
-      ),
-    },
-  ]
+ 
 
-  const handlePageChange = () => {}
+  const handlePageChange = (page:number, pageSize:number) => {
+    console.log("Page changed to:", page, "with page size:", pageSize)
+  }
 
   return <div className="gists-container">
     <div className="gists-header">
         <div className="label">Public Gists</div>
        <LayoutModeSwitcher></LayoutModeSwitcher>
     </div>
-    <div>
-            <DataTable
-  columns={columns}
-  data={data}
-  loading={loading}
-  pagination={{
-    current: 1,
-    pageSize: 10,
-    total: totalPages, 
-    showSizeChanger: true,
-    pageSizeOptions: [5, 10, 20],
-    showQuickJumper: true,
-    onChange: handlePageChange, 
-    showTotal: (total:number, range:any) => `${range[0]}-${range[1]} of ${total} items`,
-  }}
-/>
-    </div>
+      <div>
+         <ListView
+        data={data}
+        loading={loading}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+       </div>
   </div>
 }
