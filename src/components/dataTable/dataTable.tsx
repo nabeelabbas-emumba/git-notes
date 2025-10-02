@@ -1,6 +1,4 @@
 import { ConfigProvider, Input, Table } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
 import "./dataTable.scss";
 
 export interface DataTableProps {

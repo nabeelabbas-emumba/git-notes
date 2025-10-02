@@ -1,8 +1,7 @@
-import { Row, Col, Card } from "antd";
+import { Card } from "antd";
 import "./card.scss";
 
 export const CustomCard = (props: any) => {
-  console.log("props", props);
   return (
     <Card className="custom-card" bordered>
       <div className="card-header">

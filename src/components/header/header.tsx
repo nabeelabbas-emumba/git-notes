@@ -1,4 +1,3 @@
-import React from "react";
 import "./header.scss";
 import { Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
