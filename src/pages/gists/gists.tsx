@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { DataTable } from "../../components/dataTable/dataTable";
-import { LayoutModeSwitcher } from "../../components/layoutModeSwitcher/layoutModeSwitcher";
+import {
+  LayoutModeSwitcher,
+  LayoutModeType,
+} from "../../components/layoutModeSwitcher/layoutModeSwitcher";
 import "./gists.scss";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Space, Button } from "antd";
@@ -9,6 +12,7 @@ import { CardView } from "./cardView/cardView";
 import { useGists } from "../../hooks/useGists";
 
 export const Gists = () => {
+  const [layoutMode, setLayoutMode] = useState<LayoutModeType>("list");
   const [page, setPage] = useState(1);
   const perPage = 10;
 
@@ -24,16 +28,27 @@ export const Gists = () => {
     <div className="gists-container">
       <div className="gists-header">
         <div className="label">Public Gists</div>
-        <LayoutModeSwitcher></LayoutModeSwitcher>
+        <LayoutModeSwitcher
+          mode={layoutMode}
+          onToggle={(newMode) => setLayoutMode(newMode)}
+        ></LayoutModeSwitcher>
       </div>
       <div>
-        <ListView
-          data={data?.data}
-          loading={isLoading}
-          totalPages={data?.totalPages as number}
-          onPageChange={handlePageChange}
-        />
-        {/* <CardView></CardView> */}
+        {layoutMode === "list" ? (
+          <ListView
+            data={data?.data}
+            loading={isLoading}
+            totalPages={data?.totalPages as number}
+            onPageChange={handlePageChange}
+          />
+        ) : (
+          <CardView
+            data={data?.data}
+            loading={isLoading}
+            totalPages={data?.totalPages as number}
+            onPageChange={handlePageChange}
+          ></CardView>
+        )}
       </div>
     </div>
   );

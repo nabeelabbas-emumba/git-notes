@@ -2,6 +2,7 @@
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: none;
+  height: 100%;
 
   .ant-card-head {
     background-color: #f5f7fa;
@@ -22,6 +23,8 @@
 
   .container {
     gap: 10px;
+    height: 200px;
+    overflow: auto;
     .key {
       color: #059411;
     }

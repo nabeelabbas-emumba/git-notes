@@ -5,20 +5,28 @@ import cardViewSelectedIcon from "../../assets/card-view-selected.svg";
 
 import "./layoutModeSwitcher.scss";
 
-export const LayoutModeSwitcher = () => {
-  const isListView = true;
+export type LayoutModeType = "list" | "card";
 
+interface LayoutModeSwitcherProps {
+  mode: LayoutModeType;
+  onToggle: (mode: LayoutModeType) => void;
+}
+
+export const LayoutModeSwitcher = ({
+  mode,
+  onToggle,
+}: LayoutModeSwitcherProps) => {
   return (
     <div className="icon-container">
-      {isListView ? (
+      {mode === "list" ? (
         <div>
-          <img src={cardViewIcon}></img>
+          <img onClick={() => onToggle("card")} src={cardViewIcon}></img>
           <img src={listViewSelectedIcon}></img>
         </div>
       ) : (
         <div>
           <img src={cardViewSelectedIcon}></img>
-          <img src={listViewIcon}></img>
+          <img onClick={() => onToggle("list")} src={listViewIcon}></img>
         </div>
       )}
     </div>

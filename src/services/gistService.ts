@@ -21,6 +21,9 @@ export const fetchPublicGists = async (page: number, perPage: number) => {
         ? gist?.description.split(" ")[0]
         : "keyword",
       updated_at: dayjs(gist?.updated_at).fromNow(),
+      cardJson: Object.entries(gist).filter(
+        ([key, value]) => typeof value !== "object",
+      ),
     };
   });
 

@@ -1,25 +1,38 @@
 import { Row, Col, Card } from "antd";
 import "./card.scss";
 
-export const CustomCard = () => {
+export const CustomCard = (props: any) => {
+  console.log("props", props);
   return (
     <Card className="custom-card" bordered>
       <div className="card-header">
         <div className="container">
-          <span className="key">key:</span>
-          <span className="value">value</span>
+          <div>{"{"}</div>
+          {props.cardJson.map((list: any) => {
+            return (
+              <div key={list[0]}>
+                <span className="key">{`"${list[0]}"`}: </span>
+                <span className="value">{`"${list[1]}"`}</span>
+              </div>
+            );
+          })}
+          <div>{"}"}</div>
         </div>
       </div>
       <div className="card-body">
-        <img className="avatar" alt="user-avatar-image" src=""></img>
+        <img
+          className="avatar"
+          alt="user-avatar-image"
+          src={props?.owner?.avatar_url}
+        ></img>
         <div>
           <div>
-            <span className="name">John Does</span>
+            <span className="name">{props?.owner?.login}</span>
             <span className="slash">/</span>
-            <span className="gist-name">Gists</span>
+            <span className="gist-name">gist_name</span>
           </div>
-          <div className="created-at">Notebook Name</div>
-          <div className="description">Description</div>
+          <div className="created-at">{props?.notebook[0]}</div>
+          <div className="description">{props?.keyword}</div>
         </div>
       </div>
     </Card>
