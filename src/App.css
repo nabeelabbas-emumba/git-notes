@@ -1,9 +1,9 @@
-body{
-      background-color: #f6f8fa;
+body {
+  background-color: #f6f8fa;
 }
 
-.landing-container{
+.landing-container {
   max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }

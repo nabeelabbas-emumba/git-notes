@@ -6,7 +6,7 @@ export const useGists = (page: number, perPage: number = 10) => {
   return useQuery({
     queryKey: [PUBLIC_GIST_QUERY_KEY, page, perPage],
     queryFn: () => fetchPublicGists(page, perPage),
-    placeholderData: (prevData, prevQuery) => prevData, 
-    staleTime: 1000 * 60 * 1, 
+    placeholderData: (prevData, prevQuery) => prevData,
+    staleTime: 1000 * 60 * 1,
   });
 };

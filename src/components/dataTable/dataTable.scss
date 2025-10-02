@@ -1,5 +1,5 @@
-.custom-table{
-    border: 1px solid #ddd;
+.custom-table {
+  border: 1px solid #ddd;
 
   .ant-table-thead > tr > th {
     background: #f0f2f5;
@@ -10,11 +10,11 @@
     padding: 12px;
   }
 
-  .ant-table-pagination{
+  .ant-table-pagination {
     padding: 0 1rem;
   }
 
-  .name-cell{
+  .name-cell {
     display: flex;
     align-items: center;
     gap: 10px;

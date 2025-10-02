@@ -6,7 +6,7 @@ dayjs.extend(relativeTime);
 export const fetchPublicGists = async (page: number, perPage: number) => {
   const response = await axios.get(
     `https://api.github.com/gists/public?page=${page}&per_page=${perPage}`,
-    { validateStatus: () => true } 
+    { validateStatus: () => true },
   );
 
   if (response.status !== 200) {
@@ -14,11 +14,14 @@ export const fetchPublicGists = async (page: number, perPage: number) => {
   }
 
   const data = response.data.map((gist: any) => {
-    return { 
-        ...gist,
-         notebook : Object.keys(gist?.files),
-         keyword: gist?.description.length ? gist?.description.split(' ')[0] : 'keyword',
-         updated_at : dayjs(gist?.updated_at).fromNow()}
+    return {
+      ...gist,
+      notebook: Object.keys(gist?.files),
+      keyword: gist?.description.length
+        ? gist?.description.split(" ")[0]
+        : "keyword",
+      updated_at: dayjs(gist?.updated_at).fromNow(),
+    };
   });
 
   const linkHeader = response.headers["link"];

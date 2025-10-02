@@ -1,24 +1,23 @@
-import { ConfigProvider, Input, Table } from "antd"
-import { LeftOutlined, RightOutlined } from "@ant-design/icons"
-import { useEffect, useState } from "react"
-import "./dataTable.scss"
+import { ConfigProvider, Input, Table } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { useEffect, useState } from "react";
+import "./dataTable.scss";
 
 export interface DataTableProps {
-  columns: any[]
-  data: any[]
-  loading?: boolean,
-  pagination?: any
+  columns: any[];
+  data: any[];
+  loading?: boolean;
+  pagination?: any;
 }
 
 export function DataTable({
   columns,
   data,
   loading = false,
-  pagination = {}
+  pagination = {},
 }: DataTableProps) {
-
   return (
-     <ConfigProvider
+    <ConfigProvider
       theme={{
         token: {
           colorPrimary: "#0b3a3b",
@@ -34,5 +33,5 @@ export function DataTable({
         pagination={pagination}
       />
     </ConfigProvider>
-  )
+  );
 }

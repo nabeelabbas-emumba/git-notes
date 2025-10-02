@@ -1,17 +1,14 @@
-import React from 'react';
-import './header.scss';
-import { Button, Input } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import React from "react";
+import "./header.scss";
+import { Button, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 function Header() {
   return (
-   <header className="topbar" role="banner">
+    <header className="topbar" role="banner">
       <div className="topbar__inner">
         {/* Left side - Brand */}
-        <div 
-          className="topbar__brand" 
-          aria-label="Brand"
-        >
+        <div className="topbar__brand" aria-label="Brand">
           <span aria-hidden="true">
             <img src="/logo.svg" alt="EMUMBA Logo" />
           </span>
@@ -20,19 +17,22 @@ function Header() {
 
         {/* Right side - Search and User actions */}
         <div className="topbar__right">
-          <form className="topbar__search" role="search" aria-label="Search gists by ID">
+          <form
+            className="topbar__search"
+            role="search"
+            aria-label="Search gists by ID"
+          >
             <Input
               allowClear
               placeholder="Login to search by name/content, or paste Gist URL/ID... (Try pasting a gist URL)"
               prefix={<SearchOutlined />}
               suffix={
-                <Button 
-                  type="text" 
+                <Button
+                  type="text"
                   size="small"
                   icon={<SearchOutlined />}
                   aria-label="Search"
-                >
-                </Button>
+                ></Button>
               }
               className="topbar__search-input"
               type="search"
@@ -41,12 +41,9 @@ function Header() {
           </form>
 
           <div className="topbar__actions">
-              <Button 
-                type="primary" 
-                className="topbar__login" 
-              >
-                Login
-              </Button>
+            <Button type="primary" className="topbar__login">
+              Login
+            </Button>
           </div>
         </div>
       </div>
