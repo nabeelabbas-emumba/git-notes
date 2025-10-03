@@ -1,6 +1,7 @@
 import "./header.scss";
 import { Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { GithubLogin } from "../../providers/githubLogin";
 
 function Header() {
   return (
@@ -38,11 +39,12 @@ function Header() {
               aria-label="Search gists by ID"
             />
           </form>
-
           <div className="topbar__actions">
-            <Button type="primary" className="topbar__login">
-              Login
-            </Button>
+            <GithubLogin>
+              <Button type="primary" className="topbar__login">
+                Login
+              </Button>
+            </GithubLogin>
           </div>
         </div>
       </div>

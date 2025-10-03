@@ -13,7 +13,7 @@ export const fetchPublicGists = async (page: number, perPage: number) => {
     throw new Error("Failed to fetch gists");
   }
 
-  const data = response.data.map((gist: any) => {
+  const data = response.data?.map((gist: any) => {
     return {
       ...gist,
       notebook: Object.keys(gist?.files),

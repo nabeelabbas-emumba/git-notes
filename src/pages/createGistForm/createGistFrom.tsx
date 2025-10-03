@@ -9,7 +9,7 @@ interface GistFormValues {
   content: string;
 }
 
-export const CreateGistForm: React.FC = () => {
+export const CreateGistForm = () => {
   const { control, handleSubmit, reset } = useForm<GistFormValues>({
     defaultValues: {
       description: "",
