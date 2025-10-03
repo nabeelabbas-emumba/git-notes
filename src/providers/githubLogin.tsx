@@ -2,13 +2,16 @@ import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase";
 
 import React from "react";
+import { useUserStore } from "../store/useUserStore";
 
 const provider = new GithubAuthProvider();
 provider.addScope("gist");
 
 export const GithubLogin = ({ children }: any) => {
+
+  const { setUser, setToken } = useUserStore();
+
   const handleLogin = async () => {
-    console.log("Login button clicked");
     try {
       const result = await signInWithPopup(auth, provider);
 
@@ -18,6 +21,10 @@ export const GithubLogin = ({ children }: any) => {
 
       console.log("GitHub Token:", token);
       console.log("Firebase User:", user);
+
+      token && setToken(token)
+      user && setUser(user)
+
     } catch (error: any) {
       console.error("GitHub login error:", error);
       const pendingCred = GithubAuthProvider.credentialFromError(error);
@@ -28,8 +35,8 @@ export const GithubLogin = ({ children }: any) => {
   };
 
   return React.cloneElement(children, {
-    onClick: handleLogin,
-  });
+        onClick: handleLogin,
+      })
 };
 
 export default GithubLogin;
