@@ -2,12 +2,13 @@ import { Card } from "antd";
 import "./card.scss";
 
 export const CustomCard = (props: any) => {
+  console.log("props...", props);
   return (
     <Card className="custom-card" bordered>
       <div className="card-header">
         <div className="container">
           <div>{"{"}</div>
-          {props.cardJson.map((list: any) => {
+          {props?.cardJson?.map((list: any) => {
             return (
               <div key={list[0]}>
                 <span className="key">{`"${list[0]}"`}: </span>

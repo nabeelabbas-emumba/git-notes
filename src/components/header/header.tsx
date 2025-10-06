@@ -6,8 +6,7 @@ import { useUserStore } from "../../store/useUserStore";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu";
 
 function Header() {
-  const { user, token, clearUser } = useUserStore();
-  console.log('user...', user)
+  const { user, clearUser } = useUserStore();
 
   return (
     <header className="topbar" role="banner">
@@ -29,7 +28,11 @@ function Header() {
           >
             <Input
               allowClear
-              placeholder={user ? 'Search Gist...' :'Login to search by name/content, or paste Gist URL/ID... (Try pasting a gist URL)'}
+              placeholder={
+                user
+                  ? "Search Gist..."
+                  : "Login to search by name/content, or paste Gist URL/ID... (Try pasting a gist URL)"
+              }
               prefix={<SearchOutlined />}
               suffix={
                 <Button
@@ -45,15 +48,15 @@ function Header() {
             />
           </form>
           <div className="topbar__actions">
-          
-            {
-              user ?    <DropdownMenu user={user} clearUser={clearUser}></DropdownMenu>:
-              ( <GithubLogin>
-              <Button type="primary" className="topbar__login">
-                Login
-              </Button>
-            </GithubLogin>)
-            }
+            {user ? (
+              <DropdownMenu user={user} clearUser={clearUser}></DropdownMenu>
+            ) : (
+              <GithubLogin>
+                <Button type="primary" className="topbar__login">
+                  Login
+                </Button>
+              </GithubLogin>
+            )}
           </div>
         </div>
       </div>

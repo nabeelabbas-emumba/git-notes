@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/header/header";
 import { AppRoutes } from "./routes/routes";
 
-function App() {  
+function App() {
   return (
     <main className="ladding">
       <Header></Header>

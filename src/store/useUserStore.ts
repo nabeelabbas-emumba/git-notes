@@ -23,6 +23,6 @@ export const useUserStore = create<UserState>()(
       setToken: (token) => set({ token }),
       clearToken: () => set({ token: null }),
     }),
-    { name: AUTH_STORAGE_KEY } // localStorage key
-  )
+    { name: AUTH_STORAGE_KEY }, // localStorage key
+  ),
 );

@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Gists } from "../pages/gists/gists";
 import { CreateGistForm } from "../pages/createGistForm/createGistFrom";
 import { ROUTES } from "../constants/routes";
+import { UserProfile } from "../pages/userProfile/userProfile";
 
 export const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
       />
       <Route path={ROUTES.GISTS} element={<Gists />} />
       <Route path={ROUTES.CREATE_GIST} element={<CreateGistForm />} />
+      <Route path={ROUTES.USER_PROFILE} element={<UserProfile />} />
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
