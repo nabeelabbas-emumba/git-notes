@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 
 import React from "react";
 import { useUserStore } from "../store/useUserStore";
+import { getAuthenticatedUser } from "../services/auth";
 
 const provider = new GithubAuthProvider();
 provider.addScope("gist");
@@ -16,10 +17,9 @@ export const GithubLogin = ({ children }: any) => {
 
       const credential = GithubAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
-      const user = result.user;
 
-      console.log("GitHub Token:", token);
-      console.log("Firebase User:", user);
+      const authenticatedUser = await getAuthenticatedUser(token as string);
+      const user = { ...result.user, ...authenticatedUser };
 
       token && setToken(token);
       user && setUser(user);

@@ -4,6 +4,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { GithubLogin } from "../../providers/githubLogin";
 import { useUserStore } from "../../store/useUserStore";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu";
+import { useGistStore } from "../../store/useGistStore";
 
 function Header() {
   const { user, clearUser } = useUserStore();

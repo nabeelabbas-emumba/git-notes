@@ -5,29 +5,43 @@ import {
   LayoutModeType,
 } from "../../components/layoutModeSwitcher/layoutModeSwitcher";
 import "./gists.scss";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Space, Button } from "antd";
 import { ListView } from "./listView/listView";
 import { CardView } from "./cardView/cardView";
 import { useGists } from "../../hooks/useGists";
+import { useGistStore } from "../../store/useGistStore";
+import { useUserStore } from "../../store/useUserStore";
 
 export const Gists = () => {
+  const { user, token } = useUserStore();
+  const { viewType, setViewType } = useGistStore();
+
   const [layoutMode, setLayoutMode] = useState<LayoutModeType>("list");
   const [page, setPage] = useState(1);
-  const perPage = 10;
+  const [perPage, setPerPage] = useState(10);
 
-  const { data, isLoading, isError } = useGists(page, perPage);
+  const totalPages = 1000;
 
-  console.log({ data, isLoading, isError });
+  useEffect(() => {
+    if (viewType === "starred" && !user) {
+      setViewType("public");
+    }
+  }, [user]);
 
-  const handlePageChange = (page: number, pageSize: number) => {
-    console.log("Page changed to:", page, "with page size:", pageSize);
+  const { data, isLoading, isError }: any = useGists(page, perPage, viewType);
+
+  const handlePageChange = (pageNumber: number, pageSize: number) => {
+    console.log("Page changed to:", pageNumber, "with page size:", pageSize);
+    if (pageSize !== perPage) {
+      setPerPage(pageSize);
+      setPage(1);
+    }
+    if (page !== pageNumber) setPage(pageNumber);
   };
 
   return (
     <div className="gists-container">
       <div className="gists-header">
-        <div className="label">Public Gists</div>
+        <div className="label">{viewType} Gists</div>
         <LayoutModeSwitcher
           mode={layoutMode}
           onToggle={(newMode) => setLayoutMode(newMode)}
@@ -38,14 +52,18 @@ export const Gists = () => {
           <ListView
             data={data?.data}
             loading={isLoading}
-            totalPages={data?.totalPages as number}
+            totalPages={totalPages}
+            currentPage={page}
+            perPage={perPage}
             onPageChange={handlePageChange}
           />
         ) : (
           <CardView
             data={data?.data}
             loading={isLoading}
-            totalPages={data?.totalPages as number}
+            totalPages={totalPages}
+            currentPage={page}
+            perPage={perPage}
             onPageChange={handlePageChange}
           ></CardView>
         )}
