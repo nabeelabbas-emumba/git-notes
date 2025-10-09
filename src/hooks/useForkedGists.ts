@@ -3,20 +3,10 @@ import { PUBLIC_GIST_QUERY_KEY } from "../constants/util";
 import { ViewType } from "../store/useGistStore";
 import { githubGistService } from "../services/gistService";
 
-export const useGists = (
-  page: number,
-  perPage: number = 10,
-  viewType: ViewType,
-) => {
+export const useForkedGists = () => {
   return useQuery({
-    queryKey: [PUBLIC_GIST_QUERY_KEY, page, perPage, viewType],
-    queryFn: async () => {
-      if (viewType === "starred") {
-        return githubGistService.starredGists(page, perPage);
-      } else {
-        return githubGistService.publicGists(page, perPage);
-      }
-    },
+    queryKey: [PUBLIC_GIST_QUERY_KEY],
+    queryFn: () => githubGistService.forkedGists(),
     // placeholderData: (prevData, prevQuery) => prevData,
     // staleTime: 1000 * 60 * 1,
     staleTime: 0, // always stale → triggers new API call

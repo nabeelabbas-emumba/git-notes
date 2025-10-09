@@ -1,0 +1,36 @@
+.pagination-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: end;
+  padding: 0 1rem;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  font-weight: 600;
+  background-color: #ffffff;
+  border-color: #0b3a3b;
+  color: #0b3a3b;
+}
+
+.ant-pagination .ant-pagination-item-active:hover {
+  font-weight: 600;
+  background-color: #ffffff;
+  border-color: #0b3a3b;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #0b3a3b;
+}
+
+.ant-pagination .ant-pagination-item-active a:hover {
+  color: #0b3a3b;
+}
+
+.custom-spin .ant-spin-text {
+  color: #0b3a3b;
+  font-weight: 600;
+}
+
+.custom-spin .ant-spin-dot-item {
+  background-color: #0b3a3b !important;
+}

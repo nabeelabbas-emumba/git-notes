@@ -2,8 +2,13 @@ import "./header.scss";
 import { Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { GithubLogin } from "../../providers/githubLogin";
+import { useUserStore } from "../../store/useUserStore";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu";
+import { useGistStore } from "../../store/useGistStore";
 
 function Header() {
+  const { user, clearUser } = useUserStore();
+
   return (
     <header className="topbar" role="banner">
       <div className="topbar__inner">
@@ -24,7 +29,11 @@ function Header() {
           >
             <Input
               allowClear
-              placeholder="Login to search by name/content, or paste Gist URL/ID... (Try pasting a gist URL)"
+              placeholder={
+                user
+                  ? "Search Gist..."
+                  : "Login to search by name/content, or paste Gist URL/ID... (Try pasting a gist URL)"
+              }
               prefix={<SearchOutlined />}
               suffix={
                 <Button
@@ -40,11 +49,15 @@ function Header() {
             />
           </form>
           <div className="topbar__actions">
-            <GithubLogin>
-              <Button type="primary" className="topbar__login">
-                Login
-              </Button>
-            </GithubLogin>
+            {user ? (
+              <DropdownMenu user={user} clearUser={clearUser}></DropdownMenu>
+            ) : (
+              <GithubLogin>
+                <Button type="primary" className="topbar__login">
+                  Login
+                </Button>
+              </GithubLogin>
+            )}
           </div>
         </div>
       </div>
