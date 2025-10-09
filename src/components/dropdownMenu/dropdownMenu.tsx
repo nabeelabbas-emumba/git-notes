@@ -5,7 +5,6 @@ import { ROUTES } from "../../constants/routes";
 import { useGistStore, ViewType } from "../../store/useGistStore";
 
 export const DropdownMenu = ({ user, clearUser }: any) => {
-  console.log("user...", user);
   const navigate = useNavigate();
   const { setViewType } = useGistStore();
 
@@ -20,6 +19,9 @@ export const DropdownMenu = ({ user, clearUser }: any) => {
       navigate(ROUTES.GISTS);
       setViewType(key as ViewType);
     }
+    if(key === 'create'){
+        navigate(ROUTES.CREATE_GIST)
+    }
   };
 
   const menu = (
@@ -32,8 +34,8 @@ export const DropdownMenu = ({ user, clearUser }: any) => {
       <Menu.Item key="profile">Your github Profile</Menu.Item>
       <Menu.Item key="starred">Starred</Menu.Item>
       <Menu.Item key="public">Gists</Menu.Item>
+      <Menu.Item key="create">Create Gist</Menu.Item>
       <hr></hr>
-      <Menu.Item key="help">Help</Menu.Item>
       <Menu.Item key="signout">Sign out</Menu.Item>
     </Menu>
   );
