@@ -12,7 +12,7 @@ export const useGists = (
     queryKey: [PUBLIC_GIST_QUERY_KEY, page, perPage, viewType],
     queryFn: async () => {
       if (viewType === "starred") {
-        return githubGistService.starredGist(page, perPage);
+        return githubGistService.starredGists(page, perPage);
       } else {
         return githubGistService.publicGists(page, perPage);
       }

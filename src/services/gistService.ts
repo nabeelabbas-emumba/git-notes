@@ -34,7 +34,7 @@ export const githubGistService = {
     return transformGistResponse(response);
   },
 
-  starredGist: async (page: number, perPage: number) => {
+  starredGists: async (page: number, perPage: number) => {
     const response = await axios.get(
       `${BASE_URL}/starred?page=${page}&per_page=${perPage}`,
       getHeaders(),
@@ -54,23 +54,10 @@ export const githubGistService = {
     return response.data;
   },
 
-  forkedGist: async () => {
+  forkedGists: async () => {
     const response = await axios.get(`${BASE_URL}`, getHeaders());
     return transformGistResponse(response);
   },
-
-  // getForks: async (gistId: string) => {
-  //   const response = await axios.get(`${BASE_URL}/${gistId}/forks`, getHeaders());
-  //   if (response.status !== 200) {
-  //     throw new Error("Failed to get forks");
-  //   }
-  //   return response.data;
-  // },
-
-  // isForkedByUser: async (gistId: string, currentUserLogin: string) => {
-  //   const forks = await githubGistService.getForks(gistId);
-  //   return forks.some((fork: any) => fork.owner?.login === currentUserLogin);
-  // },
 };
 
 const transformGistResponse = (response: any) => {

@@ -6,7 +6,7 @@ import { githubGistService } from "../services/gistService";
 export const useForkedGists = () => {
   return useQuery({
     queryKey: [PUBLIC_GIST_QUERY_KEY],
-    queryFn: () => githubGistService.forkedGist(),
+    queryFn: () => githubGistService.forkedGists(),
     // placeholderData: (prevData, prevQuery) => prevData,
     // staleTime: 1000 * 60 * 1,
     staleTime: 0, // always stale → triggers new API call
